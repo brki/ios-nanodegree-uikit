@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="iYZ-Mq-4iF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="iYZ-Mq-4iF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Rock Paper Scissors View Controller-->
@@ -53,10 +54,22 @@
                                     <action selector="makeYourMove:" destination="iYZ-Mq-4iF" eventType="touchUpInside" id="fGy-X8-GSq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HX5-vi-nhX">
+                                <rect key="frame" x="130" y="518" width="46" height="30"/>
+                                <state key="normal" title="History">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Poy-WB-7Fd" kind="modal" identifier="history" id="gMI-9x-VcQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fqQ-nG-h6S" firstAttribute="top" secondItem="HX5-vi-nhX" secondAttribute="bottom" constant="20" id="3pw-UT-WsX"/>
+                            <constraint firstItem="Fgh-U1-uLB" firstAttribute="centerX" secondItem="HX5-vi-nhX" secondAttribute="centerX" constant="7" id="Czy-bf-uKU"/>
                             <constraint firstItem="fqQ-nG-h6S" firstAttribute="top" secondItem="Fgh-U1-uLB" secondAttribute="bottom" constant="69" id="DGs-Ua-fFS"/>
+                            <constraint firstItem="HX5-vi-nhX" firstAttribute="top" secondItem="Fgh-U1-uLB" secondAttribute="bottom" constant="19" id="bZE-ed-qn8"/>
                             <constraint firstAttribute="centerX" secondItem="Fgh-U1-uLB" secondAttribute="centerX" id="nzP-dG-aub"/>
                         </constraints>
                     </view>
@@ -71,6 +84,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AH7-9D-0G1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="373" y="141"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="FAq-lq-T57">
+            <objects>
+                <viewController id="Poy-WB-7Fd" customClass="HistoryViewController" customModule="RockPaperScissors" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bmb-hn-BWx"/>
+                        <viewControllerLayoutGuide type="bottom" id="IlU-r8-3IF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SV6-Wf-WoJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUz-gw-FM8">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="History" id="ndM-PJ-EpD">
+                                        <barButtonItem key="leftBarButtonItem" title=" &lt; Play" id="OsK-t4-K0C">
+                                            <connections>
+                                                <action selector="dismiss:" destination="Poy-WB-7Fd" id="TT6-Ue-sdp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <connections>
+                                            <outlet property="backBarButtonItem" destination="OsK-t4-K0C" id="LGi-1X-YTJ"/>
+                                        </connections>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dv-jo-3nY">
+                                <rect key="frame" x="16" y="64" width="288" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyCell" textLabel="Wwf-qz-S2f" detailTextLabel="NlJ-db-9y5" style="IBUITableViewCellStyleValue1" id="ezx-pU-SaS">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ezx-pU-SaS" id="Flf-Si-WtR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wwf-qz-S2f">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NlJ-db-9y5">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Poy-WB-7Fd" id="fPY-x6-AMs"/>
+                                    <outlet property="delegate" destination="Poy-WB-7Fd" id="eYe-vK-CNG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Dv-jo-3nY" firstAttribute="top" secondItem="bUz-gw-FM8" secondAttribute="bottom" id="57C-tg-UUv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Dv-jo-3nY" secondAttribute="trailing" id="8su-Xs-rnT"/>
+                            <constraint firstItem="bUz-gw-FM8" firstAttribute="top" secondItem="bmb-hn-BWx" secondAttribute="bottom" id="AVT-hw-0hp"/>
+                            <constraint firstItem="IlU-r8-3IF" firstAttribute="top" secondItem="8Dv-jo-3nY" secondAttribute="bottom" id="bqK-rZ-42y"/>
+                            <constraint firstItem="bUz-gw-FM8" firstAttribute="leading" secondItem="SV6-Wf-WoJ" secondAttribute="leading" id="c3x-bz-tdd"/>
+                            <constraint firstItem="8Dv-jo-3nY" firstAttribute="leading" secondItem="SV6-Wf-WoJ" secondAttribute="leadingMargin" id="qlZ-RN-FDA"/>
+                            <constraint firstAttribute="trailing" secondItem="bUz-gw-FM8" secondAttribute="trailing" id="wtV-Mv-Ey7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="bUz-gw-FM8" id="z1n-Nq-LsT"/>
+                        <outlet property="tableView" destination="8Dv-jo-3nY" id="Ke5-5R-0Xw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHe-lm-grM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="373" y="789"/>
         </scene>
         <!--ResultViewController-->
         <scene sceneID="1ng-f0-WIA">
