@@ -36,23 +36,20 @@ class StoryNodeViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Table - Place Holder Implementation
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //TODO: Implement to push the next story node.
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("StoryNodeViewController") as! StoryNodeViewController
+        controller.storyNode = self.storyNode.storyNodeForIndex(indexPath.row)
+        self.navigationController?.pushViewController(controller, animated: true)
 
     }
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Return the number of prompts in the storyNode (The 2 is just a place holder)
-        return 2
+        return self.storyNode.promptCount()
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //TODO: Dequeue a cell and populate it with text from the correct prompt.
-
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
-
-        cell.textLabel!.text = "Place holder prompt"
-
+        cell.textLabel!.text = self.storyNode.promptForIndex(indexPath.row)
         return cell
     }
 
